@@ -27,18 +27,21 @@ Library.prototype.removeBookByTitle = function(title)
 Library.prototype.removeBookByAuthor = function(author)
   {
     for(var i=0; i<this.bookShelf.length; i++) {
-      if(this.bookShelf[i].title === book.author){
-        return false;
+      if(this.bookShelf[i].author === author){
+        this.bookShelf.splice(i,1,);
+        i--;
+        return true;
       }
     }
-    this.bookShelf.splice(author);
-    return true;
+    return false;
 };
 
-// Library.prototype.getRandomBook = function()
-// {
-  // var rand = Library[Math.random() * Library.length>>0)];
-// };
+Library.prototype.getRandomBook = function()
+{
+  max = Library.length;
+  var getRandomBook = Library[Math.floor(Math.random() * max)];
+  return getRandomBook;
+};
 
 // Library.prototype.getBookByTitle = function (title)
 // {
