@@ -4,23 +4,13 @@ function Book(title, author, numPages, pubDate)
   this.author = author;
   this.numPages = numPages;
   this.pubDate = pubDate;
-};
+}
 
-Book.prototype.editBook = function(oBook)
-{
+// Book.prototype.editBook = function(oBook)
+// {
+// 
+// };
 
-};
-
-var stormy = new Book( {
-  title: "Full Disclosure",
-  author: "Stormy Daniels",
-  numPages: "288",
-  pubDate: 2018
-});
-
-var mango = new Book( {
-  title: "House On Mango Street",
-  author: "Sandra Cisneros",
-  numPages: "110",
-  pubDate: 1984
-});
+var mango = new Book ("House On Mango Street", "Sandra Cisneros", 110, 1984);
+var stormy = new Book ("Full Disclosure", "Stormy Daniels", 288, 2018);
+var caramelo = new Book ("Caramelo", "Sandra Cisneros", 449, 2002);

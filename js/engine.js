@@ -5,34 +5,23 @@ function Library(){
 Library.prototype.addBook = function(book)
 {
   for(var i=0; i<this.bookShelf.length; i++) {
-      if(this.bookShelf[i].title.toLowerCase().trim() === book.title.toLowerCase().trim()){
+      if (this.bookShelf[i].title === book.title){
         return false;
       }
     }
     this.bookShelf.push(book);
     return true;
- //
 };
 
-Library.prototype.removeBookByTitle = function(title)//title will be a string
- {
-  for(var i=0; i<this.bookShelf.length; i++) {
-    //1st time we loop this.bookShelf[0].title value is "harry potter"
-    //2nd time we loop this.bookShelf[1].title value is "IT"
-     if(this.bookShelf[i].title === title){
-        //only way to end up inside this if statement is if the value of this.bookShelf[i].title equals title
-      this.bookShelf.splice(i,1)
-      return true;
-       }
-     }
+Library.prototype.removeBookByTitle = function(title) {
 return false;
 };
 
-Library.prototype.removeBookByAuthor = function(author)
+Library.prototype.removeBookByAuthor = function(authorName)
   {
     var haveRemoved = false;
     for(var i=0; i<this.bookShelf.length; i++) {
-      if(this.bookShelf[i].author === author){
+      if(this.bookShelf[i].author === authorName){
         this.bookShelf.splice(i,1);
         i--;
         haveRemoved = true;
@@ -52,37 +41,66 @@ Library.prototype.getRandomBook = function()
   return getRandomBook;
 };
 
-// Library.prototype.getBookByTitle = function (title)
-// {
-//
-// };
-//
-// Library.prototype.getBookByAuthor = function (author)
-// {
-//
-// };
-//
-// Library.prototype.addBooks = function (books)
-// {
-//
-// };
-//
-// Library.prototype.getAuthors = function ()
-// {
-//
-// };
-//
-// Library.prototype.getRandomAuthorName = function ()
-// {
-//
-// };
+
+Library.prototype.getBookByTitle = function(title) {
+  var foundBooks = [  ];
+  for (var i = 0;   i < this.bookShelf.length; i++) {
+    if (this.bookShelf[i].title.indexOf(title) > -1) {
+      foundBooks.push(this.bookShelf[i])
+    }
+  }
+  return foundBooks;
+};
+
+
+Library.prototype.getBookByAuthor = function(author) {
+  var foundBooks = [  ];
+  for (var i = 0;   i < this.bookShelf.length; i++) {
+    if (this.bookShelf[i].author.indexOf(author) > -1) {
+      foundBooks.push(this.bookShelf[i])
+    }
+  }
+  return foundBooks;
+};
+
+
+Library.prototype.addBooks = function(bookArray) {
+  var addedBooks = 0;
+	 for (var i = 0; i < bookArray.length; index++) {
+  	if (this.addBook(bookArray[i])){
+			addedBooks ++;
+		}
+  }
+   return addedBooks
+ };
+
+Library.prototype.getAuthors = function () {
+  var foundAuthors = [];
+  if (this.bookShelf.length === 0) {
+    return foundAuthors;
+  }
+  foundAuthors.push(this.bookShelf[0].author);
+  for (var i = 0; i < this.bookShelf.length; i++) {
+    if (!foundAuthors.includes(this.bookShelf[i].author)) {
+      foundAuthors.push(this.bookShelf[i].author);
+    }
+  }
+  return foundAuthors;
+}
+
+
+Library.prototype.getRandomAuthorName = function() {
+  var randomBook = this.getRandomBook();
+  return randomBook.author;
+};
+
 
 document.addEventListener("DOMContentLoaded", function(e){
   window.gLibrary = new Library();
-
 });
 
 setTimeout(function(){
  gLibrary.addBook(mango);
  gLibrary.addBook(stormy);
+ gLibrary.addBook(caramelo);
 },500);
