@@ -13,8 +13,17 @@ Library.prototype.addBook = function(book)
     return true;
 };
 
-Library.prototype.removeBookByTitle = function(title) {
-return false;
+Library.prototype.removeBookByTitle = function(title)
+  {
+    var haveRemoved = false;
+    for(var i=0; i<this.bookShelf.length; i++) {
+      if(this.bookShelf[i].title === title){
+        this.bookShelf.splice(i,1);
+        i--;
+        haveRemoved = true;
+      }
+    }
+    return haveRemoved;
 };
 
 Library.prototype.removeBookByAuthor = function(authorName)
