@@ -55,7 +55,7 @@ Library.prototype.getBookByTitle = function(title) {
   var foundBooks = [  ];
   for (var i = 0;   i < this.bookShelf.length; i++) {
     if (this.bookShelf[i].title.indexOf(title) > -1) {
-      foundBooks.push(this.bookShelf[i])
+      foundBooks.push(this.bookShelf[i]);
     }
   }
   return foundBooks;
@@ -66,7 +66,7 @@ Library.prototype.getBookByAuthor = function(author) {
   var foundBooks = [  ];
   for (var i = 0;   i < this.bookShelf.length; i++) {
     if (this.bookShelf[i].author.indexOf(author) > -1) {
-      foundBooks.push(this.bookShelf[i])
+      foundBooks.push(this.bookShelf[i]);
     }
   }
   return foundBooks;
@@ -80,7 +80,7 @@ Library.prototype.addBooks = function(bookArray) {
 			addedBooks ++;
 		}
   }
-   return addedBooks
+   return addedBooks;
  };
 
 Library.prototype.getAuthors = function () {
@@ -95,7 +95,7 @@ Library.prototype.getAuthors = function () {
     }
   }
   return foundAuthors;
-}
+};
 
 
 Library.prototype.getRandomAuthorName = function() {
